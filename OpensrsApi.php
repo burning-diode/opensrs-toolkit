@@ -13,7 +13,7 @@ class SlimOpensrs
 
 	public function process($func, $data)
 	{
-		require_once('opensrs/openSRS_loader.php');
+		require_once(__DIR__ . '/opensrs/openSRS_loader.php');
 
 		$apiAdmin = $this->mailSuperAdmin();
 
