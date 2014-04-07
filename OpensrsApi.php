@@ -2,13 +2,13 @@
 
 namespace techsterx\SlimOpensrs;
 
-class SlimOpensrs
+class OpensrsApi
 {
 	protected $app;
 
 	public function __construct()
 	{
-		$this->app = Slim::getInstance();
+		$this->app = \Slim\Slim::getInstance();
 	}
 
 	public function process($func, $data)
@@ -34,7 +34,8 @@ class SlimOpensrs
 
 	private function mailSuperAdmin($field = null)
 	{
-		$auth = $this->app->config('opensrs.authentication')['mail'];
+		$config = $this->app->config('opensrs.authentication');
+		$info = $config['mail'];
 
 		return $field === null || !array_key_exists($field, $info) ? $info : $info[$field];
 	}
