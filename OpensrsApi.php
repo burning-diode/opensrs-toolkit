@@ -28,7 +28,13 @@ class OpensrsApi
 			'data' => $data,
 		);
 
-		$osrs = processOpenSRS('json', json_encode($callArray));
+		try {
+			$osrs = processOpenSRS('json', json_encode($callArray));
+		} catch(\Exception $e) {
+			preg_match('|^oSRS-eMail Error - (.+)\.$|', $e->getMessage(), $matches);
+			return array('is_success' => 0, 'message' => array_pop($matches));
+		}
+
 		return json_decode($osrs->resultFormatted);
 	}
 
