@@ -11,31 +11,13 @@ class OpensrsApi
 		$this->app = \Slim\Slim::getInstance();
 	}
 
-	public function process($func, $data)
+	public function __call($name, $arguments)
 	{
-		require_once dirname(__FILE__) . '/opensrs/openSRS_loader.php';
+		//require_once dirname(__FILE__) . '/opensrs/openSRS_loader.php';
 
-		$apiAdmin = $this->mailSuperAdmin();
+		$response = call_user_func_array(array(__NAMESPACE__.'\\API\\'.$class, 'call'), array($arguments));
 
-		$data = array_merge(array(
-			'admin_username' => $apiAdmin['username'],
-			'admin_password' => $apiAdmin['password'],
-			'admin_domain' => $apiAdmin['domain'],
-		), $data);
-
-		$callArray = array(
-			'func' => $func,
-			'data' => $data,
-		);
-
-		try {
-			$osrs = processOpenSRS('json', json_encode($callArray));
-		} catch(\Exception $e) {
-			preg_match('|^oSRS-eMail Error - (.+)\.$|', $e->getMessage(), $matches);
-			return array('is_success' => 0, 'message' => array_pop($matches));
-		}
-
-		return json_decode($osrs->resultFormatted);
+		return json_decode($response);
 	}
 
 	private function mailSuperAdmin($field = null)

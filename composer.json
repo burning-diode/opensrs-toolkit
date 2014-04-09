@@ -12,7 +12,8 @@
   },
 	"autoload": {
 		"psr-4": {
-			"techsterx\\SlimOpensrs\\": "."
+			"techsterx\\SlimOpensrs\\": ".",
+			"techsterx\\SlimOpensrs\\API": "./opensrs"
 		}
 	}
 }
