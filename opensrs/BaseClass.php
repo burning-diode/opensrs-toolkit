@@ -19,7 +19,7 @@ abstract class BaseClass implements \techsterx\SlimOpensrs\API\ValidatorInterfac
 	{
 		self::$apiHost = 'https://admin.hostedemail.com';
 
-		if (static::validate($data['criteria'])) {
+		if (static::validate($data)) {
 			return self::makeCall($data);
 		}
 	}

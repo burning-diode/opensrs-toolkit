@@ -6,7 +6,7 @@ class SearchUsers extends \techsterx\SlimOpensrs\API\BaseClass
 {
 	public static function validate($data)
 	{
-		if (empty($data['domain'])) {
+		if (empty($data['criteria']['domain'])) {
 			trigger_error("oSRS Error - Domain required\n", E_USER_WARNING);
 		} else {
 			return true;
