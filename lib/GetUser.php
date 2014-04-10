@@ -6,7 +6,7 @@ class GetUser extends \techsterx\SlimOpensrs\API\BaseClass
 {
 	public static function validate($data)
 	{
-		if (empty($data['domain'])) {
+		if (empty($data['user'])) {
 			trigger_error("oSRS Error - User required\n", E_USER_WARNING);
 		} else {
 			return true;
