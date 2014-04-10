@@ -19,7 +19,7 @@ abstract class BaseClass implements \techsterx\SlimOpensrs\API\ValidatorInterfac
 	{
 		self::$apiHost = 'https://admin.hostedemail.com';
 
-		if (static::validate($data)) {
+		if (static::validate($data['criteria'])) {
 			return self::makeCall($data);
 		}
 	}
@@ -49,7 +49,7 @@ abstract class BaseClass implements \techsterx\SlimOpensrs\API\ValidatorInterfac
 	{
 		$method = self::getMethodName();
 
-		$request['credentials']['client'] = 'SlimOpenSRS API v1';
+		$request['credentials']['client'] = 'SlimOpenSRS API 1.0';
 
 		// We were passed an authentication token, don't send our password
 		if (isset($request['credentials']['token'])) {

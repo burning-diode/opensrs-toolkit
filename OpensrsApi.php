@@ -11,9 +11,12 @@ class OpensrsApi
 		$this->app = \Slim\Slim::getInstance();
 	}
 
-	public function __call($name, $arguments)
+	public function __call($name, $criteria)
 	{
-		$arguments = array_merge(array('credentials' => $this->mailAuth()), $arguments[0]);
+		$arguments = array(
+			'credentials' => $this->mailAuth(),
+			'criteria' => $criteria[0],
+		);
 
 		$response = call_user_func_array(array(__NAMESPACE__.'\\API\\'.$name, 'call'), array($arguments));
 
