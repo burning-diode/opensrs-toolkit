@@ -2,7 +2,7 @@
 
 namespace techsterx\SlimOpensrs\API;
 
-abstract class BaseClass
+abstract class BaseClass implements \techsterx\SlimOpensrs\API\ValidatorInterface
 {
 	protected static $allowBadCerts;
 	protected static $apiHost;
@@ -15,16 +15,11 @@ abstract class BaseClass
 
 	protected static $env = 'live';
 
-	protected static function validate($data)
-	{
-		return true;
-	}
-
 	public static function call($data)
 	{
 		self::$apiHost = 'https://admin.hostedemail.com';
 
-		if (self::validate($data)) {
+		if (static::validate($data)) {
 			return self::makeCall($data);
 		}
 	}
