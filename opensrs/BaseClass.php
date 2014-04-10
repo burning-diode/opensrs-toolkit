@@ -8,28 +8,24 @@ abstract class BaseClass
 	protected static $apiHost;
 	protected static $apiPort;
 
-	protected static $responseHeaders;
-	protected static $responseStatus;
+	protected static $responseHeaders= array();
+	protected static $responseStatus = 0;
 
-	protected static $curlHeaders;
+	protected static $curlHeaders = array();
 
-	abstract public static function validate($data);
+	protected static $env = 'live';
 
-	public function __construct(array $options = array())
+	protected static function validate($data)
 	{
-		self::$apiHost = $options['host'];
-		self::$apiPort = $options['port'];
-
-		self::$responseHeaders = array();
-		self::$responseStatus = '';
-
-		self::$curlHeaders = array();
+		return true;
 	}
 
 	public static function call($data)
 	{
+		self::$apiHost = 'https://admin.hostedemail.com';
+
 		if (self::validate($data)) {
-			return self::call(self::decamelize(get_called_class(), $data));
+			return self::makeCall($data);
 		}
 	}
 
@@ -54,22 +50,18 @@ abstract class BaseClass
 		return $this;
 	}
 
-	private static function makeCall($method, $request)
+	private static function makeCall($request)
 	{
-		$data = array_merge(array(
-			'credentials' => array(
-				'user' => self::$username,
-				'password' => self::$password,
-				'client' => 'SlimOpenSRS API v1',
-			),
-		), $request);
+		$method = self::getMethodName();
+
+		$request['credentials']['client'] = 'SlimOpenSRS API v1';
 
 		// We were passed an authentication token, don't send our password
 		if (isset($request['credentials']['token'])) {
-			unset($data['credentials']['password']);
+			unset($request['credentials']['password']);
 		}
 
-		$data_string = json_encode($data);
+		$data_string = json_encode($request);
 
 		$ch = curl_init(self::$apiHost . '/api/' . $method);
 
@@ -80,9 +72,14 @@ abstract class BaseClass
 		}
 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+		curl_setopt($ch, CURLOPT_HEADER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, self::$curlHeaders);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Content-Length: ' . strlen($data_string),
+		));
 
 		$response = curl_exec($ch);
 
@@ -110,7 +107,20 @@ abstract class BaseClass
 		return $body;
 	}
 
+	private static function getMethodName()
+	{
+		$class = explode('\\', get_called_class());
+		return self::uncamelize(end($class));
+	}
+
 	// Converts CamelCase into snake_case
+	private static function uncamelize($str)
+	{
+		$str = lcfirst($str);
+		$func = create_function('$c', 'return "_" . strtolower($c[1]);');
+		return preg_replace_callback('|([A-Z])|', $func, $str);
+	}
+	/*
 	private function uncamelize($str)
 	{
 		$str = lcfirst($str);
@@ -124,4 +134,5 @@ abstract class BaseClass
 
 		return $result;
 	}
+	 */
 }

@@ -13,18 +13,25 @@ class OpensrsApi
 
 	public function __call($name, $arguments)
 	{
-		//require_once dirname(__FILE__) . '/opensrs/openSRS_loader.php';
+		$arguments = array_merge(array('credentials' => $this->mailAuth()), $arguments[0]);
 
 		$response = call_user_func_array(array(__NAMESPACE__.'\\API\\'.$class, 'call'), array($arguments));
 
-		return json_decode($response);
+		return is_array($response) ? $response : json_decode($response);
 	}
 
-	private function mailSuperAdmin($field = null)
+	private function mailAuth()
 	{
-		$config = $this->app->config('opensrs.authentication');
-		$info = $config['mail'];
+		$allowed_keys = array('user', 'password');
 
-		return $field === null || !array_key_exists($field, $info) ? $info : $info[$field];
+		$config = $this->app->config('opensrs.authentication');
+
+		foreach ($config['mail'] as $key => $value) {
+			if (!in_array($key, $allowed_keys)) {
+				unset($config['mail'][$key]);
+			}
+		}
+
+		return $config['mail'];
 	}
 }
