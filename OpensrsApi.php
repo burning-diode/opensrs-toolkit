@@ -15,7 +15,7 @@ class OpensrsApi
 	{
 		$arguments = array_merge(array('credentials' => $this->mailAuth()), $arguments[0]);
 
-		$response = call_user_func_array(array(__NAMESPACE__.'\\API\\'.$class, 'call'), array($arguments));
+		$response = call_user_func_array(array(__NAMESPACE__.'\\API\\'.$name, 'call'), array($arguments));
 
 		return is_array($response) ? $response : json_decode($response);
 	}
