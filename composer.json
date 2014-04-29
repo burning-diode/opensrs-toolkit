@@ -7,9 +7,6 @@
       "email": "rexw3035@gmail.com"
     }
   ],
-  "require": {
-    "slim/slim": "2.*"
-  },
 	"autoload": {
 		"psr-4": {
 			"techsterx\\SlimOpensrs\\": ".",
