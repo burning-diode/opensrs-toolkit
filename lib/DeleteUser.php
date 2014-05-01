@@ -2,7 +2,7 @@
 
 namespace techsterx\SlimOpensrs\API;
 
-class DeleteUser extends \techsterx\SlimOpensrs\API\BaseClass
+class DeleteUser extends BaseClass
 {
 	public static function validate($data)
 	{

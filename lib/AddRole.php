@@ -2,7 +2,7 @@
 
 namespace techsterx\SlimOpensrs\API;
 
-class AddRole extends \techsterx\SlimOpensrs\API\BaseClass
+class AddRole extends BaseClass
 {
 	public static function validate($data)
 	{

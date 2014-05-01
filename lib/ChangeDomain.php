@@ -2,7 +2,7 @@
 
 namespace techsterx\SlimOpensrs\API;
 
-class ChangeDomain extends \techsterx\SlimOpensrs\API\BaseClass
+class ChangeDomain extends BaseClass
 {
 	public static function validate($data)
 	{

@@ -2,7 +2,7 @@
 
 namespace techsterx\SlimOpensrs\API;
 
-class SearchUsers extends \techsterx\SlimOpensrs\API\BaseClass
+class SearchUsers extends BaseClass
 {
 	public static function validate($data)
 	{

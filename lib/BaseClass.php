@@ -2,7 +2,7 @@
 
 namespace techsterx\SlimOpensrs\API;
 
-abstract class BaseClass implements \techsterx\SlimOpensrs\API\ValidatorInterface
+abstract class BaseClass implements ValidatorInterface
 {
 	protected static $allowBadCerts;
 	protected static $apiHost;
