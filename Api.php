@@ -2,7 +2,7 @@
 
 namespace BurningDiode\OpenSRS;
 
-class OpensrsApi
+class Api
 {
 	protected $credentials;
 
