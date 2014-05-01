@@ -1,6 +1,6 @@
 <?php
 
-namespace techsterx\SlimOpensrs\API;
+namespace BurningDiode\OpenSRS\API;
 
 class ChangeDomain extends BaseClass
 {
@@ -8,6 +8,8 @@ class ChangeDomain extends BaseClass
 	{
 		if (empty($data['domain'])) {
 			trigger_error("oSRS Error - Domain required\n", E_USER_WARNING);
+		} elseif (empty($data['attributes']['timezone'])) {
+			trigger_error("oSRS Error - Timezone required\n", E_USER_WARNING);
 		} else {
 			return true;
 		}

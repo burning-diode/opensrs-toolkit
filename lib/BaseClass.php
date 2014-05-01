@@ -1,6 +1,6 @@
 <?php
 
-namespace techsterx\SlimOpensrs\API;
+namespace BurningDiode\OpenSRS\API;
 
 abstract class BaseClass implements ValidatorInterface
 {

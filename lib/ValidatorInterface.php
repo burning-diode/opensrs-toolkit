@@ -1,6 +1,6 @@
 <?php
 
-namespace techsterx\SlimOpensrs\Api;
+namespace BurningDiode\OpenSRS\API;
 
 interface ValidatorInterface
 {

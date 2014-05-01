@@ -1,6 +1,6 @@
 <?php
 
-namespace techsterx\SlimOpensrs;
+namespace BurningDiode\OpenSRS;
 
 class OpensrsApi
 {
