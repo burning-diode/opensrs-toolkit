@@ -1,23 +1,23 @@
 {
-  "name": "burning-diode/opensrs-restful-proxy",
-  "type": "library",
-	"keywords": ["opensrs", "rest", "restful", "api", "proxy"],
+	"name": "burning-diode/opensrs-toolkit",
+	"type": "library",
+	"keywords": ["opensrs", "php", "toolkit"],
 	"license": "MIT",
-  "authors": [
+	"authors": [
 		{
 			"name": "Burning Diode",
 			"homepage": "http://www.burningdiode.com/"
-		}
-    {
-      "name": "William Rex",
-      "email": "bill.rex@burningdiode.com",
+			}
+		{
+			"name": "William Rex",
+			"email": "bill.rex@burningdiode.com",
 			"role": "Developer"
-    }
-  ],
+		}
+	],
 	"support": {
-		"issues": "https://github.com/burning-diode/opensrs-restful-proxy/issues",
-		"wiki": "https://github.com/burning-diode/opensrs-restful-proxy/wiki",
-		"source": "https://github.com/burning-diode/opensrs-restful-proxy.git"
+		"issues": "https://github.com/burning-diode/opensrs-toolkit/issues",
+		"wiki": "https://github.com/burning-diode/opensrs-toolkit/wiki",
+		"source": "https://github.com/burning-diode/opensrs-toolkit.git"
 	},
 	"autoload": {
 		"psr-4": {
