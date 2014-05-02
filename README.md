@@ -1,1 +1,1 @@
-# OpenSRS Proxy
+# OpenSRS Toolkit
