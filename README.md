@@ -1,1 +1,1 @@
-# OpenSRS RESTful Proxy
+# OpenSRS Proxy
