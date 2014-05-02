@@ -1,5 +1,5 @@
 {
-  "name": "burning-diode/opensrs-restful-proxy",
+  "name": "burning-diode/opensrs-toolkit",
   "type": "library",
 	"keywords": ["opensrs", "rest", "restful", "api", "proxy"],
 	"license": "MIT",
