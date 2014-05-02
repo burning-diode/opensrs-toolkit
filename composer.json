@@ -1,7 +1,7 @@
 {
 	"name": "burning-diode/opensrs-toolkit",
 	"type": "library",
-	"keywords": ["opensrs", "rest", "restful", "api", "proxy"],
+	"keywords": ["opensrs", "php", "toolkit"],
 	"license": "MIT",
 	"authors": [
 		{
