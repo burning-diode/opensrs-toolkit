@@ -149,7 +149,7 @@ class Api
 		$instance  = new $classname();
 
 		$response = $instance->call($arguments);
-		$payload = is_array($reponse) || is_object($response) ? $response : json_decode($response);
+		$payload = is_array($response) || is_object($response) ? $response : json_decode($response);
 
 		$this->status = (int) $instance->getStatus();
 		$this->headers = $instance->getHeaders();

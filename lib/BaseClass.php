@@ -86,7 +86,7 @@ abstract class BaseClass implements ValidatorInterface
 		$headers = explode("\r\n", $headers);
 
 		foreach ($headers as $header) {
-			list($key, $value) = explode(':', $header);
+			list($key, $value) = array_pad(explode(':', $header, 2), 2, null);
 
 			if ($value === null || $value === '') {
 				continue;
