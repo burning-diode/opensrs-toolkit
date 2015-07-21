@@ -49,7 +49,7 @@ abstract class BaseClass implements ValidatorInterface
 	{
 		$method = self::getMethodName();
 
-		$request['credentials']['client'] = 'SlimOpenSRS API 1.0';
+		$request['credentials']['client'] = 'Burning Diode OpenSRS Toolkit';
 
 		// We were passed an authentication token, don't send our password
 		if (isset($request['credentials']['token'])) {
